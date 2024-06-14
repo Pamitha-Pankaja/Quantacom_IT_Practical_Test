@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="employees"
+              pageWidth="595"
+              pageHeight="842"
+              columnWidth="555"
+              leftMargin="20"
+              rightMargin="20"
+              topMargin="20"
+              bottomMargin="20"
+              uuid="b3f91c5c-a8e6-4e2e-8b89-6f5bc77e6aa0">
+    <queryString><![CDATA[]]></queryString>
+    <field name="name" class="java.lang.String"/>
+    <field name="birthDate" class="java.time.LocalDate"/>
+    <field name="currentAgeInDays" class="java.lang.Long"/>
+    <title>
+        <band height="50" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="555" height="30" forecolor="#333333" backcolor="#F0F0F0"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle" markup="styled"/>
+                <text><![CDATA[<b>Employee Report</b>]]></text>
+            </staticText>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="30" splitType="Stretch">
+            <rectangle>
+                <reportElement x="0" y="0" width="555" height="30" forecolor="#FFFFFF" backcolor="#808080"/>
+            </rectangle>
+            <staticText>
+                <reportElement x="0" y="0" width="150" height="30" forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle" markup="styled"/>
+                <text><![CDATA[<b>Name</b>]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="150" y="0" width="150" height="30" forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle" markup="styled"/>
+                <text><![CDATA[<b>Birth Date</b>]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="300" y="0" width="150" height="30" forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle" markup="styled"/>
+                <text><![CDATA[<b>Current Age (Days)</b>]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <rectangle>
+                <reportElement x="0" y="0" width="555" height="20"/>
+            </rectangle>
+            <textField>
+                <reportElement x="0" y="0" width="150" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="150" y="0" width="150" height="20"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{birthDate} != null ? $F{birthDate}.toString() : ""]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="300" y="0" width="150" height="20"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{currentAgeInDays} != null ? $F{currentAgeInDays}.toString() : ""]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <summary>
+        <band height="30" splitType="Stretch">
+            <rectangle>
+                <reportElement x="0" y="0" width="555" height="30" forecolor="#FFFFFF" backcolor="#808080"/>
+            </rectangle>
+            <staticText>
+                <reportElement x="0" y="0" width="150" height="30" forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle" markup="styled"/>
+                <text><![CDATA[<b>Total Employees</b>]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="150" y="0" width="405" height="30"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA["" + $V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>
